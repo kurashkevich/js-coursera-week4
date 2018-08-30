@@ -1,3 +1,12 @@
+/**
+ * @param {String} date
+ * @returns {Object}
+ */
+module.exports = function (date) {
+    time.value = date;
+    return time;
+};
+
 
 var time = {
     value: '',
@@ -120,16 +129,6 @@ function parseDate(){
     time.value = str;
 }
 
-
-function date(str){
-    time.value = str;
-    return time;
-}
- var time = date('2017-05-16 13:45')
-    .add(24, 'hours')
-    .subtract(1, 'months')
-    .add(3, 'days')
-    .add(15, 'minutes');
 
 
 
