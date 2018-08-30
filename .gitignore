@@ -12,6 +12,7 @@ tmp
 /.project
 /.classpath
 rebel.xml
+.DS_Store
 
 # Logs
 logs
