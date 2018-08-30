@@ -111,7 +111,6 @@ function parseDate(){
     var hours =  time.value.getHours();
     if(hours<10){
         hours = '0'+hours;
-        console.log(hours);
     }
     else {
         hours = hours;
