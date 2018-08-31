@@ -45,6 +45,10 @@ function addUnits(units, type) {
             newDate = new Date(str.getFullYear(), str.getMonth(), str.getDate(), str.getHours(), str.getMinutes() + units);
             break;
         }
+        case 'years': {
+            newDate = new Date(str.getFullYear()+units, str.getMonth(), str.getDate(), str.getHours(), str.getMinutes());
+            break;
+        }
     }
     time.value = newDate;
     parseDate();
@@ -70,6 +74,10 @@ function subtractUnits(units, type){
             newDate = new Date(str.getFullYear(), str.getMonth(), str.getDate(), str.getHours(), str.getMinutes() - units);
             break;
         }
+        case 'years': {
+            newDate = new Date(str.getFullYear()-units, str.getMonth(), str.getDate(), str.getHours(), str.getMinutes());
+            break;
+        }
     }
     time.value = newDate;
     parseDate();
@@ -77,10 +85,11 @@ function subtractUnits(units, type){
 
 function checkData(units, type){
     try{
-        if((parseInt(units)<0) || (type !== 'days' && type !== 'months' && type !== 'minutes' && type !== 'hours')){
+        if((parseInt(units)<0) || (type !== 'days' && type !== 'years' && type !== 'months' && type !== 'minutes' && type !== 'hours')){
             throw new TypeError('check data');
         }
     }catch (e) {
+        throw e;
     }
 }
 
@@ -131,7 +140,10 @@ function date(str){
     .add(24, 'hours')
     .subtract(1, 'months')
     .add(3, 'days')
-    .add(15, 'minutes');
+    .add(-5, 'minutes')
+     .subtract(15, 'years');
 
+console.log(time.value);
 
+checkData(-5, 'days');
 

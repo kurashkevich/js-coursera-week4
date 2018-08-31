@@ -32,6 +32,7 @@ var time = {
     }
 }
 
+
 function addUnits(units, type) {
     var str = new Date(time.value);
     var newDate;
@@ -50,6 +51,10 @@ function addUnits(units, type) {
         }
         case 'minutes': {
             newDate = new Date(str.getFullYear(), str.getMonth(), str.getDate(), str.getHours(), str.getMinutes() + units);
+            break;
+        }
+        case 'years': {
+            newDate = new Date(str.getFullYear()+units, str.getMonth(), str.getDate(), str.getHours(), str.getMinutes());
             break;
         }
     }
@@ -77,17 +82,23 @@ function subtractUnits(units, type){
             newDate = new Date(str.getFullYear(), str.getMonth(), str.getDate(), str.getHours(), str.getMinutes() - units);
             break;
         }
+        case 'years': {
+            newDate = new Date(str.getFullYear()-units, str.getMonth(), str.getDate(), str.getHours(), str.getMinutes());
+            break;
+        }
     }
     time.value = newDate;
     parseDate();
 }
 
+
 function checkData(units, type){
     try{
-        if((parseInt(units)<0) || (type !== 'days' && type !== 'months' && type !== 'minutes' && type !== 'hours')){
+        if((parseInt(units)<0) || (type !== 'days' && type !== 'years' && type !== 'months' && type !== 'minutes' && type !== 'hours')){
             throw new TypeError('check data');
         }
     }catch (e) {
+        throw e;
     }
 }
 
