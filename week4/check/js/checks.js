@@ -38,7 +38,7 @@ var friends = [
     },
     {
         name: 'Керри',
-        gender: 'Женский',
+        gender: 'Женсsкий',
         email: 'danamcgee@example.com',
         favoriteFruit: 'Апельсин'
     },
