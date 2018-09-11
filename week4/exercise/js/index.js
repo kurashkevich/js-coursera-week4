@@ -47,36 +47,26 @@ var friends = [
 
 
 var lib = (function () {
-
     return {
-        query: function () {
-            console.log('this is query function');
+        query: function (arr) {
+            console.log('query');
+            // Вот здесть мне надо создать копию массива, но эта строчка
+
+            for(var i=1; i<arguments.length; i++){
+                arguments[i];
+            }
         },
-        select: function () {
-            console.log('this is select function');
+        select: function (args) {
+            console.log('select');
         },
         filterIn: function () {
-            console.log('this is filterIn function');
+            console.log('filterIn');
         },
-        value: function () { // Это интерфейс, публичные функции, это и есть замыкания. Эти функции замывкают приватные поля и функции
-            return 'asd';
-        }
     };
 })();
 
-var bestFriends = lib.query();
+var bestFriends = lib.query(friends, lib.select('name', 'gender', 'email'), lib.filterIn());
 
-
-function testFunction(a) {
-    console.log(arguments.length + ' :' + arguments[6]);
-    return a;
-}
-
-function test2() {
-    return 5;
-}
-
-testFunction(2,4,6,7,8,9, test2());
 
 
 
