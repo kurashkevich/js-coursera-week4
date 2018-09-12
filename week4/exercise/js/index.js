@@ -49,24 +49,58 @@ var friends = [
 var lib = (function () {
     return {
         query: function (arr) {
-            console.log('query');
-            // Вот здесть мне надо создать копию массива, но эта строчка
 
-            for(var i=1; i<arguments.length; i++){
-                arguments[i];
-            }
         },
-        select: function (args) {
-            console.log('select');
+        select: function () {
+            var fields = [];
+            for(var i=0; i< arguments.length; i++){
+                fields.push(arguments[i]);
+            }
+            getSelectedArr(fields);
         },
         filterIn: function () {
-            console.log('filterIn');
+            //console.log('filterIn');
         },
     };
 })();
 
-var bestFriends = lib.query(friends, lib.select('name', 'gender', 'email'), lib.filterIn());
 
+
+
+
+//var bestFriends = lib.query(friends, lib.select('name', 'gender', 'email'), lib.filterIn());
+
+
+
+/**
+ * QUERY
+ * 1. Скопировать исходный массив
+ * 2. Вызвать функции селект и фильтер
+ * 3. удалить свойства, которых нет в селекте
+ */
+
+
+
+
+function getSelectedArr(fields){
+    var selectedArr =[];
+    for(var i=0; i<friends.length; i++){
+        var obj = {};
+        for(var y=0; y<fields.length; y++){
+            if(friends[i].hasOwnProperty(fields[y])){
+                Object.defineProperty(obj, fields[y], {
+                    value: friends[i][fields[y]],
+                    writable: true
+                });
+            }
+        }
+        selectedArr.push(obj);
+    }
+    console.log(selectedArr);
+    return selectedArr;
+}
+
+console.log(lib.select('name', 'gender'));
 
 
 
