@@ -49,37 +49,30 @@ var friends = [
 var lib = (function () {
     return {
         query: function (arr) {
-
+            var resultSelect = [];
+            var selects = [];
+            for(var i=1; i<arguments.length; i++) {
+                if(arguments[i][0]==='select'){
+                    console.log('select@');
+                }
+                //arguments[i];
+            }
         },
         select: function () {
             var fields = [];
             for(var i=0; i< arguments.length; i++){
                 fields.push(arguments[i]);
             }
-            getSelectedArr(fields);
+            console.log('select');
+            return ['select', getSelectedArr(fields)];
+
         },
         filterIn: function () {
-            //console.log('filterIn');
+            console.log('filterIn');
+            return 'filterIn'
         },
     };
 })();
-
-
-
-
-
-//var bestFriends = lib.query(friends, lib.select('name', 'gender', 'email'), lib.filterIn());
-
-
-
-/**
- * QUERY
- * 1. Скопировать исходный массив
- * 2. Вызвать функции селект и фильтер
- * 3. удалить свойства, которых нет в селекте
- */
-
-
 
 
 function getSelectedArr(fields){
@@ -96,17 +89,43 @@ function getSelectedArr(fields){
         }
         selectedArr.push(obj);
     }
-    console.log(selectedArr);
+   // console.log(selectedArr);
     return selectedArr;
 }
 
-console.log(lib.select('name', 'gender'));
+
+function concatTest(){
+
+}
+
+function intersect(a, b, c) {
+    var t;
+    var resultArr;
+    //if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
+    return a.filter(function (e) {
+        return b.indexOf(e) > -1;
+    });
+}
+
+var arr1 = ['name', 'gender', 'asd', 'email', 'favoriteFruit'];
+var arr2 = ['name', 'gender',  'gender'];
+var arr3 = ['name', 'gender', '123'];
+
+function resultArr(){
+
+}
+
+var fields = intersect(arr2, arr1)
+
+//console.log(fields);
+//console.log(lib.select('name', 'gender', 'gender'));
+var bestFriends = lib.query(friends, lib.select('name', 'gender','gender', 'email', 'asd'), lib.select('name', 'gender'), lib.filterIn());
 
 
+concatTest();
 
 
-
-
+//если фильтруем поле по значениям a и b, а затем по b и c, то в результате отфильтроваться должно только по значени b.
 
 
 
