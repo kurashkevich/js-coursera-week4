@@ -52,10 +52,7 @@ var lib = (function () {
             var resultSelect = [];
             var selects = [];
             for(var i=1; i<arguments.length; i++) {
-                if(arguments[i][0]==='select'){
-                    console.log('select@');
-                }
-                //arguments[i];
+                arguments[i];
             }
         },
         select: function () {
@@ -89,14 +86,9 @@ function getSelectedArr(fields){
         }
         selectedArr.push(obj);
     }
-   // console.log(selectedArr);
     return selectedArr;
 }
 
-
-function concatTest(){
-
-}
 
 function intersect(a, b, c) {
     var t;
@@ -106,26 +98,15 @@ function intersect(a, b, c) {
         return b.indexOf(e) > -1;
     });
 }
-
 var arr1 = ['name', 'gender', 'asd', 'email', 'favoriteFruit'];
 var arr2 = ['name', 'gender',  'gender'];
-var arr3 = ['name', 'gender', '123'];
-
-function resultArr(){
-
-}
 
 var fields = intersect(arr2, arr1)
 
 //console.log(fields);
-//console.log(lib.select('name', 'gender', 'gender'));
-var bestFriends = lib.query(friends, lib.select('name', 'gender','gender', 'email', 'asd'), lib.select('name', 'gender'), lib.filterIn());
+console.log(lib.select('name', 'gender', 'gender'));
+//var bestFriends = lib.query(friends, lib.select('name', 'gender','gender', 'email', 'asd'), lib.select('name', 'gender'), lib.filterIn());
 
-
-concatTest();
-
-
-//если фильтруем поле по значениям a и b, а затем по b и c, то в результате отфильтроваться должно только по значени b.
 
 
 
