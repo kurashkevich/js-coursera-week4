@@ -54,10 +54,11 @@ var lib = (function () {
             for(var i=1; i<arguments.length; i++) {
                 arguments[i];
             }
+
         },
         select: function () {
             var fields = [];
-            for(var i=0; i< arguments.length; i++){
+            for(var i=0; i<arguments.length; i++){
                 fields.push(arguments[i]);
             }
             console.log('select');
@@ -104,8 +105,10 @@ var arr2 = ['name', 'gender',  'gender'];
 var fields = intersect(arr2, arr1)
 
 //console.log(fields);
-console.log(lib.select('name', 'gender', 'gender'));
-//var bestFriends = lib.query(friends, lib.select('name', 'gender','gender', 'email', 'asd'), lib.select('name', 'gender'), lib.filterIn());
+console.log(lib.select('name', 'gender'));
+var bestFriends = lib.query(friends);
+
+//console.log(bestFriends);
 
 
 
