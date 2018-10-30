@@ -44,8 +44,7 @@ var friends = [
 ];
 
 
-var lib = (function () {
-    return{
+var lib = {
         query: function () {
             return queryMethod(arguments);
         },
@@ -57,19 +56,18 @@ var lib = (function () {
             filterInMethod();
             //return this;
         }
-    };
-    function queryMethod(args) {
-        var newCollection = Object.values(args[0]);
-        return newCollection;
-    }
-    function selectMethod(args){
-        console.log(args);
-    }
-    function filterInMethod(){
-        //console.log('потом применяется фильтр');
-    }
+};
 
-})();
+function queryMethod(args) {
+    var newCollection = Object.values(args[0]);
+    return newCollection;
+}
+function selectMethod(args){
+    console.log(args);
+}
+function filterInMethod(){
+    //console.log('потом применяется фильтр');
+}
 
 var bestFriends = lib.query(friends, lib.select('name', 'email'), lib.filterIn());
 //console.log(bestFriends);
