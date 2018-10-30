@@ -43,7 +43,7 @@ var friends = [
     }
 ];
 
-
+var myCollection = friends;
 var lib = {
         query: function () {
             return queryMethod(arguments);
@@ -59,24 +59,35 @@ var lib = {
 };
 
 function queryMethod(args) {
-    var newCollection = Object.values(args[0]);
-    return newCollection;
+    console.log('query');
+    myCollection = args[0].slice();
+    console.log(friends);
+    console.log(myCollection);
+    return myCollection;
 }
 function selectMethod(args){
+    console.log('select');
     console.log(args);
 }
 function filterInMethod(){
+    console.log('filterIn');
     //console.log('потом применяется фильтр');
 }
 
-var bestFriends = lib.query(friends, lib.select('name', 'email'), lib.filterIn());
+function addElement(){
+    console.log('addElement');
+    var igor = {
+        name: 'igor',
+        gender: 'Мужской',
+        email: 'igor@example.com',
+        favoriteFruit: 'pork'
+    }
+    myCollection.push(igor);
+    return myCollection;
+
+}
+
+var bestFriends = lib.query(friends, lib.select('name', 'email'), lib.filterIn(), addElement());
 //console.log(bestFriends);
 
-/**
- * QUERY
- * 1. Разделить аргументы, 1 коллекция, остальные операции
- * 2. Применить операнды
- * 3. Вернуть измененную коллекцию
- *
- *
- * **/
+
