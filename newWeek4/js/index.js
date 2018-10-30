@@ -80,5 +80,5 @@ var bestFriends = lib.query(friends, lib.select('name', 'email'), lib.filterIn()
  * 2. Применить операнды
  * 3. Вернуть измененную коллекцию
  *
- * 
+ *
  * **/
