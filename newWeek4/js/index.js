@@ -43,19 +43,19 @@ var friends = [
     }
 ];
 
-var myCollection = friends;
 var lib = {
-        query: function () {
-            return queryMethod(arguments);
-        },
-        select: function () {
-            selectMethod(arguments);
-            //return this;
-        },
-        filterIn: function () {
-            filterInMethod();
-            //return this;
-        }
+    _myCollection: [],
+    query: function () {
+        return queryMethod(arguments);
+    },
+    select: function () {
+        selectMethod(arguments);
+        //return this;
+    },
+    filterIn: function () {
+        filterInMethod();
+        //return this;
+    }
 };
 
 function queryMethod(args) {
@@ -65,16 +65,18 @@ function queryMethod(args) {
     console.log(myCollection);
     return myCollection;
 }
-function selectMethod(args){
+
+function selectMethod(args) {
     console.log('select');
     console.log(args);
 }
-function filterInMethod(){
+
+function filterInMethod() {
     console.log('filterIn');
     //console.log('потом применяется фильтр');
 }
 
-function addElement(){
+function addElement() {
     console.log('addElement');
     var igor = {
         name: 'igor',
